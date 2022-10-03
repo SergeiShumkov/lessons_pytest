@@ -18,7 +18,7 @@ def calculate():
 
 @pytest.fixture
 def make_number():
-    # print("\nI'm getting number")
+    print("\nI'm getting number")
     number = randrange(1, 1000, 5)
     yield number
-    # print(f"\nNumber at home {number}")
+    print(f"\nNumber at home {number}")

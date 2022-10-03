@@ -1,4 +1,7 @@
 import pytest
+import allure
+
+allure.attach
 
 from src.schemas.user import User
 from src.baseclasses.response import Response
@@ -19,6 +22,9 @@ def test_getting_users_list(get_users, make_number):  # (get_users, calculate)
 @pytest.mark.production
 @pytest.mark.skip('[ISSUE-23414] Issue with network connection')   # тест не будет выполняться
 def test_another():
+    """
+    In that test we try to check that 1 is equel to 2
+    """
     assert 1 == 1
 
 # def test_calculation_both_negative(calculate):
@@ -45,5 +51,13 @@ def test_another():
    ('b', -2, None),
    ('b', 'b', None)
 ])
-def test_calculator(first_value, second_value, result, calculate): 
+def test_calculator(first_value, second_value, result, calculate):
+    """
+    In test we are testing calculating with different values(Valid and invalid)
+    """ 
     assert calculate(first_value, second_value) == result
+
+@pytest.mark.development  # см. pytest.ini
+@pytest.mark.production
+def test_another_failing_t():
+    assert 1 == 2
