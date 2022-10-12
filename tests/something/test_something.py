@@ -36,3 +36,32 @@ def test_something3(get_player_generator):
         'localize', PlayerLocalization('fr_FR').set_number(15)
         ).build()
     print(object_to_send)
+
+def test_something4(get_player_generator):
+    object_to_send = get_player_generator.update_inner_value(
+        ['localize', 'fr', 'is', 'the', 'best', 'lang'],
+        PlayerLocalization('fr_FR').set_number(15).build()
+        ).build()
+    print(object_to_send)
+
+
+@pytest.mark.parametrize("localizations", [
+    "fr", "de", "ab", "ch"
+])
+def test_something5(get_player_generator, localizations):
+    object_to_send = get_player_generator.update_inner_value(
+        ['localize', localizations],
+        PlayerLocalization('fr_FR').set_number(15).build()).build()
+    print(object_to_send)
+
+
+@pytest.mark.parametrize("localizations, loc", [
+    ("fr", "fr_FR"),
+    ("es", "es_ES"),
+    ("it", "it_IT")
+])
+def test_something6(get_player_generator, localizations, loc):
+    object_to_send = get_player_generator.update_inner_value(
+        ['localize', localizations],
+        PlayerLocalization(loc).set_number(15).build()).build()
+    print(object_to_send)
