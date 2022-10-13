@@ -5,7 +5,8 @@ allure.attach
 
 from src.schemas.user import User
 from src.baseclasses.response import Response
-
+from src.schemas.computer import Computer
+from examples import computer
 
 # def test_1():
 #     # print(resp.json())
@@ -61,3 +62,9 @@ def test_calculator(first_value, second_value, result, calculate):
 @pytest.mark.production
 def test_another_failing_t():
     assert 1 == 2
+
+def test_pydantic_object():
+    comp = Computer.parse_obj(computer)
+    print()
+    # print(comp.detailed_info.physical.color.as_rgb_tuple())
+    print(comp.schema_json())
