@@ -65,3 +65,15 @@ def test_something6(get_player_generator, localizations, loc):
 
 def test_something7():
     print(Statuses.list())
+
+@pytest.mark.parametrize("a, b, result", [
+    (2, 3, 5),
+    (1, 9, 10),
+    (23, 4, 28),
+    ("cv", "b", "cvb")
+
+])
+def test_something8(a, b, result):
+    # assert a + b == result
+    assert True
+

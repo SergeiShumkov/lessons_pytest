@@ -1,3 +1,4 @@
+from email.policy import default
 import pytest
 from random import randrange
 
@@ -28,3 +29,17 @@ def make_number():
     number = randrange(1, 1000, 5)
     yield number
     print(f"\nNumber at home {number}")
+
+
+def pytest_addoption(parser):
+    parser.addoption(
+        "--env",
+        default="development",
+        help="It is env variable where our tests will be run. Possible values:"
+             "prod, development(default), qa"
+    )
+
+@pytest.fixture(autouse=True)
+def getting_env(request):
+    env = request.config.getoption('--env')
+    yield env

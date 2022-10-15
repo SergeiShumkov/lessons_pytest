@@ -21,7 +21,8 @@ def test_getting_users_list(get_users, make_number):  # (get_users, calculate)
 
 @pytest.mark.development  # см. pytest.ini
 @pytest.mark.production
-@pytest.mark.skip('[ISSUE-23414] Issue with network connection')   # тест не будет выполняться
+@pytest.mark.skip('[ISSUE-23414] Issue with network connection')
+# тест не будет выполняться(Указать причину), но будет отражаться в отчетах
 def test_another():
     """
     In that test we try to check that 1 is equel to 2
