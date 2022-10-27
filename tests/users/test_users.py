@@ -59,7 +59,8 @@ def test_calculator(first_value, second_value, result, calculate):
     """ 
     assert calculate(first_value, second_value) == result
 
-@pytest.mark.development  # см. pytest.ini
+@pytest.mark.development  # см. pytest.ini. Запускается 'pytest -k development'
+# или 'pytest -k "not development"' 
 @pytest.mark.production
 def test_another_failing_t():
     assert 1 == 2
